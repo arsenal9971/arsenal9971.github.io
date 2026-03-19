@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Héctor Andrade Loarca — CV</title>
+<link rel="icon" type="image/jpeg" href="images/zen_circle.jpg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --peach: #c8907a;
+    --peach-light: #d4a594;
+    --teal: #4a7a8a;
+    --teal-deep: #3a6575;
+    --teal-dark: #2e5260;
+    --ink: #1a2a32;
+    --ink-soft: #2e4450;
+    --ink-muted: #5a7a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--ink);
+    background: #3a6575;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    padding: 34px 40px 36px;
+    background: 
+      linear-gradient(
+        175deg,
+        #d4a594 0%,
+        #c8a090 8%,
+        #b0969a 18%,
+        #8e919e 30%,
+        #7a8d9e 40%,
+        #6a8a9c 50%,
+        #5a8494 60%,
+        #4e7e90 70%,
+        #45758a 80%,
+        #3d6c82 90%,
+        #35627a 100%
+      );
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  .page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  .page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: soft-light;
+  }
+
+  .page > * { position: relative; z-index: 2; }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .header-left {
+    flex: 1;
+  }
+
+  .header-left h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+    line-height: 1.15;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .header-left .tagline {
+    font-size: 10.5pt;
+    color: rgba(255,255,255,0.75);
+    margin-top: 5px;
+    font-weight: 400;
+  }
+
+  .header-left .tagline strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .header-right {
+    text-align: right;
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    padding-top: 4px;
+  }
+
+  .header-right a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+  }
+
+  .header-photo {
+    flex-shrink: 0;
+  }
+
+  .header-photo img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.15);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .header-right .location {
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── LAYOUT ── */
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 30px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 16px; }
+
+  .section-title {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* ── EXPERIENCE ENTRIES ── */
+  .entry {
+    margin-bottom: 12px;
+    padding-left: 11px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .entry-role {
+    font-weight: 600;
+    font-size: 9.5pt;
+    color: #fff;
+  }
+
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: rgba(255,255,255,0.42);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .entry-org {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.65);
+    margin-top: 1px;
+  }
+
+  .entry-org strong {
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .entry-desc {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.48);
+    margin-top: 2px;
+    line-height: 1.45;
+  }
+
+  .current-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 6pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 3px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub {
+    margin-bottom: 7px;
+    font-size: 8pt;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.45;
+    padding-left: 11px;
+    position: relative;
+  }
+
+  .pub::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .pub .pub-title {
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+  }
+
+  .pub .pub-venue {
+    font-style: italic;
+    color: var(--peach-light);
+    font-weight: 400;
+  }
+
+  .pub .pub-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar .section { margin-bottom: 14px; }
+  .sidebar .section-title::after { display: none; }
+
+  .skill-group { margin-bottom: 9px; }
+
+  .skill-group-label {
+    font-size: 7pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+
+  .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    font-size: 7pt;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .tag.highlight {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    margin-bottom: 2px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .lang-item .level {
+    color: rgba(255,255,255,0.4);
+    font-size: 7.5pt;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-entry {
+    margin-bottom: 9px;
+    padding-left: 11px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+  }
+
+  .edu-entry .degree { font-weight: 600; font-size: 9pt; color: #fff; }
+
+  .edu-entry .school { font-size: 8pt; color: rgba(255,255,255,0.58); }
+
+  .edu-entry .meta {
+    font-size: 7pt;
+    color: rgba(255,255,255,0.38);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .edu-entry .thesis {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.42);
+    margin-top: 1px;
+    font-style: italic;
+  }
+
+  .edu-entry .gpa {
+    font-weight: 400;
+    color: rgba(255,255,255,0.42);
+    font-size: 7.5pt;
+  }
+
+  /* ── AWARDS ── */
+  .award-item {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.58);
+    margin-bottom: 3px;
+    padding-left: 11px;
+    position: relative;
+  }
+
+  .award-item::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--peach-light);
+    font-size: 5pt;
+    top: 2px;
+  }
+
+  .award-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: rgba(255,255,255,0.32);
+  }
+
+  /* ── PAGE 2 ── */
+  .page + .page { margin-top: 20px; }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(20, 40, 50, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .top-bar a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .top-bar a:hover { color: #fff; }
+
+  .top-bar .back-link::before {
+    content: '\2190\0020';
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(200, 144, 122, 0.2);
+    color: #d4a594;
+    border: 1px solid rgba(200, 144, 122, 0.25);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .download-btn:hover {
+    background: rgba(200, 144, 122, 0.3);
+    border-color: rgba(200, 144, 122, 0.4);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(200, 144, 122, 0.15);
+  }
+
+  .download-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  @media print {
+    .top-bar { display: none !important; }
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<div class="top-bar">
+  <a href="index.html" class="back-link">Back to Home</a>
+  <button class="download-btn" onclick="window.print()">
+    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7h3V1h4v6h3L8 12zm-6 2h12v2H2v-2z"/></svg>
+    Download PDF
+  </button>
+</div>
+
+<!-- ═══════════════════ PAGE 1 ═══════════════════ -->
+<div class="page">
+
+  <header class="header">
+    <div class="header-photo">
+      <img src="images/profil.png" alt="Héctor Andrade Loarca">
+    </div>
+    <div class="header-left">
+      <h1>Héctor Andrade Loarca</h1>
+      <div class="tagline">
+        <strong>AI Researcher & Founder</strong> · PhD Mathematics · Deep Learning · 3D Vision · Biomedical Imaging
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="location">Munich, Germany</div>
+      <div>andrade@math.lmu.de</div>
+      <div>+49 157 8643 5041</div>
+      <a href="http://hectorandrade.xyz">hectorandrade.xyz</a>
+    </div>
+  </header>
+
+  <div class="columns">
+    <div class="main">
+
+      <!-- INDUSTRY & STARTUP -->
+      <div class="section">
+        <div class="section-title">Industry & Startup Experience</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">CTO & Co-Founder <span class="current-badge">Current</span></div>
+            <div class="entry-date">Nov 2025 – present</div>
+          </div>
+          <div class="entry-org"><strong>Stealth Startup</strong> · Munich, Mexico City & Bay Area</div>
+          <div class="entry-desc">Building bleeding-edge AI solutions. Stealth mode.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Head of AI & Co-Founder <span class="current-badge">Current</span></div>
+            <div class="entry-date">Mar 2019 – present</div>
+          </div>
+          <div class="entry-org"><strong>AngioWave Imaging</strong> · Boston, MA</div>
+          <div class="entry-desc">R&D, algorithm and software development in biomedical imaging, focused on AI algorithms for next-generation vascular imaging. Founding team member.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Head of AI</div>
+            <div class="entry-date">Dec 2024 – Nov 2025</div>
+          </div>
+          <div class="entry-org"><strong>NAZCA</strong> · Mexico City & Munich</div>
+          <div class="entry-desc">R&D and due diligence for AI-based investments, consulting startups on AI development. Developed AI-based tools for investment strategy guidance, underwriting, and back-office operations.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Research Intern</div>
+            <div class="entry-date">Sep 2019 – Dec 2019</div>
+          </div>
+          <div class="entry-org"><strong>Harvard Medical School</strong> · Cambridge, MA</div>
+          <div class="entry-desc">Medical imaging research with AI. Contrast and radiation dose reduction in angiography.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Data Scientist</div>
+            <div class="entry-date">Feb 2015 – Feb 2016</div>
+          </div>
+          <div class="entry-org"><strong>OPI Analytics</strong> · Mexico City</div>
+          <div class="entry-desc">ML algorithms based on robust statistical models and Bayesian geostatistics; data scouting, mining, visualization, and predictive modelling.</div>
+        </div>
+      </div>
+
+      <!-- ACADEMIC POSITIONS -->
+      <div class="section">
+        <div class="section-title">Academic Research</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Postdoctoral Researcher <span class="current-badge">Current</span></div>
+            <div class="entry-date">Jul 2024 – present</div>
+          </div>
+          <div class="entry-org"><strong>Technical University of Munich (TUM)</strong> · Computer Vision Group</div>
+          <div class="entry-desc">Working with Prof. Daniel Cremers on 3D shape reconstruction using deep learning, novel view synthesis with diffusion models, and biomedical imaging.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Postdoctoral Research Assistant</div>
+            <div class="entry-date">Feb 2021 – Jul 2024</div>
+          </div>
+          <div class="entry-org"><strong>LMU Munich</strong> · Chair for Mathematical Foundations of AI</div>
+          <div class="entry-desc">3D shape reconstruction in deep learning with application in biomedical imaging. Collaboration with Prof. Gitta Kutyniok and Prof. Daniel Cremers.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Research Assistant (Stipendiat)</div>
+            <div class="entry-date">Oct 2017 – Oct 2020</div>
+          </div>
+          <div class="entry-org"><strong>Technische Universität Berlin</strong> · Applied Functional Analysis Group</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-role">Scholar in Numerical Simulation & Analysis</div>
+            <div class="entry-date">Feb 2013 – Sep 2015</div>
+          </div>
+          <div class="entry-org"><strong>IMATE – Instituto de Matemáticas, UNAM</strong> · Mexico City</div>
+          <div class="entry-desc">Numerical models for physical problems and computational simulation of solutions using Finite Element Methods.</div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education</div>
+
+        <div class="edu-entry">
+          <div class="degree">PhD in Mathematics</div>
+          <div class="school">LMU Munich (started at TU Berlin) · Supervised by Prof. Gitta Kutyniok</div>
+          <div class="meta">2017 – 2022</div>
+          <div class="thesis">Thesis: "Applied Microlocal Analysis for Deep Neural Networks in Inverse Problems"</div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="degree">MSc in Mathematics <span class="gpa">· GPA 1.3/1.0</span></div>
+          <div class="school">Technische Universität Berlin · Supervised by Prof. Gitta Kutyniok</div>
+          <div class="meta">2015 – 2017</div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="degree">BSc Mathematics & BSc Physics <span class="gpa">· 9.93/10 & 9.80/10</span></div>
+          <div class="school">National Autonomous University of Mexico (UNAM)</div>
+          <div class="meta">2009 – 2014</div>
+          <div class="thesis">Mathematics with honours · Gabino Barreda medal candidate (both disciplines)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── SIDEBAR ── -->
+    <div class="sidebar">
+
+      <div class="section">
+        <div class="section-title">Core Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI / ML</div>
+          <div class="tags">
+            <span class="tag highlight">PyTorch</span>
+            <span class="tag highlight">TensorFlow</span>
+            <span class="tag">3D Vision</span>
+            <span class="tag">Diffusion Models</span>
+            <span class="tag">Inverse Problems</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="tags">
+            <span class="tag highlight">Python</span>
+            <span class="tag highlight">Julia</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">CUDA</span>
+            <span class="tag">Fortran 90</span>
+            <span class="tag">R</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Data / Infra</div>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Spark</span>
+            <span class="tag">Hadoop</span>
+            <span class="tag">OpenMPI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Languages</div>
+        <div class="lang-item"><span>Spanish</span> <span class="level">Native</span></div>
+        <div class="lang-item"><span>English</span> <span class="level">C1</span></div>
+        <div class="lang-item"><span>German</span> <span class="level">C1</span></div>
+        <div class="lang-item"><span>Japanese</span> <span class="level">A1</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Selected Talks</div>
+        <div style="font-size: 7.5pt; color: rgba(255,255,255,0.65); margin-bottom: 5px;">
+          <strong style="color:rgba(255,255,255,0.85)">JuliaCon</strong> '17 '18
+        </div>
+        <div style="font-size: 7.5pt; color: rgba(255,255,255,0.65); margin-bottom: 5px;">
+          <strong style="color:rgba(255,255,255,0.85)">PyData Berlin</strong> '17 '18
+        </div>
+        <div style="font-size: 7.5pt; color: rgba(255,255,255,0.65); margin-bottom: 5px;">
+          <strong style="color:rgba(255,255,255,0.85)">SIAM Imaging</strong> '18 '20
+        </div>
+        <div style="font-size: 7.5pt; color: rgba(255,255,255,0.65); margin-bottom: 5px;">
+          <strong style="color:rgba(255,255,255,0.85)">GAMM</strong> '19
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Awards</div>
+        <div class="award-item"><span class="award-year">2017–20</span> BMS Phase II</div>
+        <div class="award-item"><span class="award-year">2015–17</span> BMS Phase I</div>
+        <div class="award-item"><span class="award-year">2015–17</span> Mexican Govt. Scholarship</div>
+        <div class="award-item"><span class="award-year">2017–18</span> JuliaCon Diversity</div>
+        <div class="award-item"><span class="award-year">2018–19</span> Young Digital Changers</div>
+        <div class="award-item"><span class="award-year">2014</span> Gabino Barreda candidate</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Memberships</div>
+        <div style="font-size: 7.5pt; color: rgba(255,255,255,0.5); line-height: 1.6;">
+          Berlin Mathematical School<br>
+          MATH+ Research Center<br>
+          MATH+ MoDS Group
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════ PAGE 2 ═══════════════════ -->
+<div class="page">
+
+  <div class="section" style="margin-top: 4px;">
+    <div class="section-title">Publications</div>
+
+    <div class="pub">
+      <span class="pub-title">"DIAMOND-SSS: Diffusion-Augmented Multi-View Optimization for Data-efficient SubSurface Scattering"</span>
+      · G. Figueroa-Araneda, I.D. Jimenez, F. Hofherr, M. Ko, H. Andrade-Loarca et al. ·
+      <span class="pub-venue">arXiv:2601.12020</span> <span class="pub-year">2026</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Investigation of data-driven stopping power calibration of treatment planning x-ray CT from simulated sparse-view proton radiographies"</span>
+      · I. Butz, H. Andrade-Loarca, A. Schiavi, V. Patera, O. Öktem, G. Kutyniok et al. ·
+      <span class="pub-venue">Physics in Medicine & Biology</span> 70 (24), 245007 <span class="pub-year">2025</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Data-Driven Forward Projector for Optimization of the Proton Stopping Power Calibration in Treatment Planning Based on Sparse Proton Radiographies"</span>
+      · I. Butz, H. Andrade-Loarca, J. Li, P.O. Öktem, A. Schiavi, P.V. Patera et al. ·
+      <span class="pub-venue">Medical Physics</span> 52 (10) <span class="pub-year">2025</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Learning interpretable queries for explainable image classification with information pursuit"</span>
+      · S. Kolek, A. Chattopadhyay, K.H.R. Chan, H. Andrade-Loarca, G. Kutyniok, R. Vidal ·
+      <span class="pub-venue">IEEE/CVF CVPR</span> <span class="pub-year">2025</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Algebraic Nexus of Fibonacci Forms and Two-Simplex Topology in Multicellular Morphogenesis"</span>
+      · W.E. Butler Hoyos, H. Andrade Loarca, K.T. Kahle, Z. Williams, E.G. Lamb et al. ·
+      <span class="pub-venue">Symmetry</span> 16 (5), 516 <span class="pub-year">2024</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Neural Poisson Surface Reconstruction: Resolution-Agnostic Shape Reconstruction from Point Clouds"</span>
+      · H. Andrade-Loarca, J. Hege, D. Cremers, G. Kutyniok ·
+      <span class="pub-venue">arXiv:2308.01766</span> <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"PoissonNet: Resolution-Agnostic 3D Shape Reconstruction using Fourier Neural Operators"</span>
+      · H. Andrade-Loarca, J. Hege, A. Bacho, G. Kutyniok ·
+      <span class="pub-venue">arXiv:2308.01766</span> <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Explaining Image Classifiers with Multiscale Directional Image Representation"</span>
+      · S. Kolek, R. Windesheim, H. Andrade-Loarca, G. Kutyniok, R. Levie ·
+      <span class="pub-venue">IEEE/CVF CVPR</span> <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"CoShNet: A Hybrid Complex Valued Neural Network using Shearlets"</span>
+      · M. Ko, U.K. Panchal, H. Andrade-Loarca, A. Mendez-Vazquez ·
+      <span class="pub-venue">arXiv:2208.06882</span> <span class="pub-year">2022</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Deep Microlocal Reconstruction for Limited-Angle Tomography"</span>
+      · H. Andrade-Loarca, G. Kutyniok, O. Öktem, P. Petersen ·
+      <span class="pub-venue">Applied & Computational Harmonic Analysis</span>, Vol. 59 <span class="pub-year">2022</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"tfShearlab: The TensorFlow Digital Shearlet Transform for Deep Learning"</span>
+      · H. Andrade-Loarca, G. Kutyniok ·
+      <span class="pub-venue">arXiv:2006.04591</span> <span class="pub-year">2020</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Shearlets as Feature Extractor for Semantic Edge Detection: The Model-Based and Data-Driven Realm"</span>
+      · H. Andrade-Loarca, G. Kutyniok, O. Öktem ·
+      <span class="pub-venue">Proceedings of Royal Society A</span>, Vol. 476, Issue 2243 <span class="pub-year">2020</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Deep Brain Source Imaging: A LSTM-inspired Approach for EEG Source Localization based on Sparse Bayesian Learning"</span>
+      · H. Andrade-Loarca, A. Hashemi, S. Haufe, K.-R. Müller, G. Kutyniok ·
+      <span class="pub-venue">SPARS Workshop</span> <span class="pub-year">2019</span>
+    </div>
+
+    <div class="pub">
+      <span class="pub-title">"Extraction of Digital Wavefront Sets Using Applied Harmonic Analysis and Deep Neural Networks"</span>
+      · H. Andrade-Loarca, G. Kutyniok, O. Öktem, P. Petersen ·
+      <span class="pub-venue">SIAM J. Imaging Sciences</span>, Vol. 12, No. 4, pp. 1936–1966 <span class="pub-year">2019</span>
+    </div>
+
+  </div>
+
+  <!-- TEACHING -->
+  <div class="section">
+    <div class="section-title">Teaching Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-role">TA — Computational Methods for Statistical Physics</div>
+        <div class="entry-date">Jan – Aug 2015</div>
+      </div>
+      <div class="entry-org">UNAM · with Prof. David P. Sanders</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-role">TA — Electromagnetism I</div>
+        <div class="entry-date">Feb – Dec 2014</div>
+      </div>
+      <div class="entry-org">UNAM · with Prof. Mirna Villavicencio Torres</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-role">TA — Ordinary Differential Equations</div>
+        <div class="entry-date">Feb – May 2014</div>
+      </div>
+      <div class="entry-org">UNAM · with Prof. Maria del Carmen Jorge y Jorge</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-role">TA — Classical Mechanics</div>
+        <div class="entry-date">Feb – Nov 2013</div>
+      </div>
+      <div class="entry-org">UNAM · with Profs. David P. Sanders & Pablo Barberis Blostein</div>
+    </div>
+  </div>
+
+  <!-- EARLY RESEARCH -->
+  <div class="section">
+    <div class="section-title">Early Research</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-role">Shock Wave Lab — Electronic Circuit Development</div>
+        <div class="entry-date">Summers 2007, 2008</div>
+      </div>
+      <div class="entry-org"><strong>CFATA-UNAM</strong> · Querétaro, Mexico</div>
+      <div class="entry-desc">Development of electroni
