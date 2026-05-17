@@ -3,619 +3,584 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Héctor Andrade Loarca — AI Researcher & Founder</title>
+<title>Héctor Andrade Loarca</title>
+<meta name="description" content="AI Researcher & Founder — Postdoc at TUM, Co-founder of AngioWave Imaging & Colmenas.">
 <link rel="icon" type="image/jpeg" href="images/zen_circle.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --warm: #bf8872;
-    --warm-light: #d4a08a;
-    --warm-glow: rgba(212, 160, 138, 0.15);
+    --fg: #1a1a1a;
+    --fg-soft: #4a4a4a;
+    --fg-muted: #888;
+    --bg: #fafaf8;
+    --bg-card: #fff;
+    --accent: #9e6b55;
+    --accent-light: #c8907a;
     --teal: #3d7a8c;
-    --teal-deep: #2c5e6e;
-    --teal-dark: #1e3d4a;
-    --navy: #142832;
-    --surface: #1a3340;
-    --surface-light: #22404f;
-    --text: rgba(255,255,255,0.92);
-    --text-soft: rgba(255,255,255,0.65);
-    --text-muted: rgba(255,255,255,0.4);
-    --border: rgba(255,255,255,0.08);
+    --border: #e8e6e2;
+    --border-light: #f0eee9;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html {
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--teal) transparent;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text);
-    background: var(--navy);
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
-  /* ═══════════════ GRAIN ═══════════════ */
-  .grain {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 9999;
-  }
-  .grain::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
-    background-size: 200px 200px; opacity: 0.45; mix-blend-mode: overlay;
-  }
-  .grain::after {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)' opacity='0.25'/%3E%3C/svg%3E");
-    background-size: 300px 300px; opacity: 0.25; mix-blend-mode: soft-light;
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
-  /* ═══════════════ NAV ═══════════════ */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 20px 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    background: rgba(20, 40, 50, 0.6);
+  /* ── HEADER / BIO ── */
+  .header {
+    padding: 60px 0 40px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .portrait {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border);
+  }
+
+  .header-text { flex: 1; }
+
+  .header-text h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .header-text .subtitle {
+    font-size: 15px;
+    color: var(--fg-soft);
+    margin-bottom: 14px;
+  }
+
+  .header-text .bio {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--fg-soft);
+  }
+
+  .header-text .bio a {
     border-bottom: 1px solid var(--border);
-    transition: all 0.4s ease;
   }
-  nav.scrolled { padding: 14px 40px; background: rgba(20, 40, 50, 0.85); }
+  .header-text .bio a:hover {
+    text-decoration: none;
+    border-color: var(--accent);
+  }
 
-  .nav-name {
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  .links a {
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+  .links a:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 36px 0;
+  }
+
+  .section-title {
     font-family: 'Instrument Serif', serif;
-    font-size: 18px; color: var(--text); letter-spacing: -0.3px;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--text-muted); text-decoration: none;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
-    text-transform: uppercase; transition: color 0.3s; position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-    height: 1px; background: var(--warm);
-    transform: scaleX(0); transition: transform 0.3s ease;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { transform: scaleX(1); }
-
-  /* ═══════════════ HERO ═══════════════ */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 120px 80px 80px;
-    position: relative;
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(191, 136, 114, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 70% at 80% 30%, rgba(61, 122, 140, 0.15) 0%, transparent 60%),
-      linear-gradient(175deg, #1e3845 0%, #142832 40%, #0f1e26 100%);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
   }
 
-  .hero-content { flex: 1; }
-
-  .hero-label {
-    font-size: 11px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 3px; color: var(--warm); margin-bottom: 20px;
-    opacity: 0; transform: translateY(20px);
-    animation: fadeUp 0.8s ease 0.2s forwards;
+  /* ── NEWS ── */
+  .news-list {
+    list-style: none;
   }
 
-  .hero h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(42px, 5.5vw, 72px);
-    font-weight: 400; line-height: 1.1; letter-spacing: -1.5px;
-    color: var(--text); max-width: 700px;
-    opacity: 0; transform: translateY(30px);
-    animation: fadeUp 1s ease 0.4s forwards;
+  .news-list li {
+    display: flex;
+    gap: 16px;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .news-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-muted);
     white-space: nowrap;
-  }
-  .hero h1 em { font-style: italic; color: var(--warm-light); }
-
-  .hero-sub {
-    font-size: 18px; color: var(--text-soft); margin-top: 24px;
-    max-width: 560px; line-height: 1.65;
-    opacity: 0; transform: translateY(20px);
-    animation: fadeUp 0.8s ease 0.7s forwards;
+    padding-top: 2px;
+    flex-shrink: 0;
+    width: 80px;
   }
 
-  .hero-actions {
-    display: flex; gap: 16px; margin-top: 40px;
-    opacity: 0; transform: translateY(20px);
-    animation: fadeUp 0.8s ease 0.9s forwards;
+  .news-text { color: var(--fg-soft); }
+
+  .highlight-tag {
+    display: inline-block;
+    background: rgba(158, 107, 85, 0.1);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.3px;
   }
 
-  /* ── PORTRAIT ── */
-  .hero-portrait {
-    flex-shrink: 0; margin-left: 60px;
-    opacity: 0; transform: translateY(30px) scale(0.95);
-    animation: portraitIn 1.2s ease 0.5s forwards;
-  }
-
-  .portrait-wrapper {
-    position: relative; width: 260px; height: 260px;
-  }
-  .portrait-wrapper::before {
-    content: ''; position: absolute; inset: -6px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--warm) 0%, var(--teal) 100%);
-    opacity: 0.35; z-index: 0;
-    animation: portraitGlow 4s ease-in-out infinite alternate;
-  }
-  .portrait-wrapper::after {
-    content: ''; position: absolute; inset: -20px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.06); z-index: 0;
-  }
-  .portrait-img {
-    position: relative; z-index: 1;
-    width: 260px; height: 260px;
-    border-radius: 50%; object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-
-  @keyframes portraitIn { to { opacity: 1; transform: translateY(0) scale(1); } }
-  @keyframes portraitGlow {
-    0% { opacity: 0.25; transform: scale(1); }
-    100% { opacity: 0.45; transform: scale(1.02); }
-  }
-
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 28px; font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 600; border-radius: 8px;
-    text-decoration: none; transition: all 0.3s ease;
-    cursor: pointer; border: none;
-  }
-  .btn-primary { background: var(--warm); color: #fff; }
-  .btn-primary:hover {
-    background: var(--warm-light); transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(191, 136, 114, 0.25);
-  }
-  .btn-ghost {
-    background: transparent; color: var(--text-soft);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .btn-ghost:hover {
-    color: var(--text); border-color: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
-
-  .hero-scroll {
-    position: absolute; bottom: 40px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
-  }
-  .hero-scroll span {
-    font-size: 10px; text-transform: uppercase;
-    letter-spacing: 2px; color: var(--text-muted);
-  }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--warm), transparent);
-    animation: scrollPulse 2s ease infinite;
-  }
-
-  /* ═══════════════ SECTIONS ═══════════════ */
-  section { padding: 100px 80px; position: relative; }
-
-  .section-label {
-    font-size: 10px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 3px; color: var(--warm); margin-bottom: 12px;
-  }
-  .section-heading {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(32px, 4vw, 48px); font-weight: 400;
-    letter-spacing: -1px; color: var(--text); margin-bottom: 48px;
-  }
-
-  /* ═══════════════ POSITIONS ═══════════════ */
-  #positions {
-    background:
-      radial-gradient(ellipse 50% 50% at 70% 20%, rgba(61, 122, 140, 0.08) 0%, transparent 60%),
-      var(--navy);
-  }
+  /* ── POSITIONS ── */
   .positions-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .pos-card {
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 14px; padding: 28px;
-    transition: all 0.4s ease; position: relative; overflow: hidden;
-  }
-  .pos-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; background: linear-gradient(90deg, var(--warm), var(--teal));
-    opacity: 0; transition: opacity 0.4s;
-  }
-  .pos-card:hover {
-    background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14);
-    transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-  }
-  .pos-card:hover::before { opacity: 1; }
 
-  .pos-emoji { font-size: 28px; margin-bottom: 14px; display: block; }
-  .pos-role { font-weight: 700; font-size: 17px; color: var(--text); margin-bottom: 4px; }
-  .pos-org { font-size: 14px; color: var(--warm-light); margin-bottom: 8px; }
+  .pos-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+  }
+
+  .pos-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .pos-content { flex: 1; }
+
+  .pos-role {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--fg);
+  }
+
+  .pos-org {
+    font-size: 14px;
+    color: var(--fg-muted);
+    margin-top: 1px;
+  }
+
   .pos-org a {
-    color: var(--warm-light); text-decoration: none;
-    border-bottom: 1px solid rgba(212, 160, 138, 0.3); transition: border-color 0.3s;
-  }
-  .pos-org a:hover { border-color: var(--warm-light); }
-  .pos-desc { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
-  .pos-badge {
-    display: inline-block; background: rgba(191, 136, 114, 0.15);
-    color: var(--warm-light); font-size: 10px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    padding: 3px 10px; border-radius: 4px; margin-bottom: 14px;
+    color: var(--accent);
   }
 
-  /* ═══════════════ PUBLICATIONS ═══════════════ */
-  #publications {
-    background:
-      radial-gradient(ellipse 60% 50% at 30% 80%, rgba(191, 136, 114, 0.06) 0%, transparent 60%),
-      linear-gradient(180deg, var(--navy) 0%, #111f28 100%);
+  .pos-desc {
+    font-size: 13px;
+    color: var(--fg-muted);
+    margin-top: 4px;
+    line-height: 1.5;
   }
-  .pub-list { max-width: 800px; }
+
+  .pos-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--teal);
+    background: rgba(61, 122, 140, 0.08);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-list {
+    list-style: none;
+  }
+
   .pub-item {
-    padding: 20px 0; border-bottom: 1px solid var(--border);
-    display: grid; grid-template-columns: 60px 1fr;
-    gap: 20px; align-items: start; transition: all 0.3s ease;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+    align-items: baseline;
   }
-  .pub-item:hover { padding-left: 8px; }
+
+  .pub-item:last-child { border-bottom: none; }
+
   .pub-year {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; color: var(--text-muted); padding-top: 2px;
+    font-size: 12px;
+    color: var(--fg-muted);
+    padding-top: 1px;
   }
+
   .pub-title {
-    font-size: 15px; font-weight: 600; color: var(--text);
-    line-height: 1.45; margin-bottom: 4px; transition: color 0.3s;
-  }
-  .pub-item:hover .pub-title { color: var(--warm-light); }
-  .pub-authors { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-  .pub-venue { font-size: 13px; font-style: italic; color: var(--teal); font-weight: 500; }
-  .pub-more { margin-top: 32px; font-size: 14px; color: var(--text-muted); }
-  .pub-more a {
-    color: var(--warm-light); text-decoration: none;
-    border-bottom: 1px solid rgba(212, 160, 138, 0.3);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.45;
   }
 
-  /* ═══════════════ ABOUT ═══════════════ */
-  #about { background: var(--navy); }
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 900px;
-  }
-  .about-text { font-size: 16px; line-height: 1.75; color: var(--text-soft); }
-  .about-text p + p { margin-top: 16px; }
-
-  .detail-group { margin-bottom: 24px; }
-  .detail-label {
-    font-size: 10px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 2px; color: var(--text-muted); margin-bottom: 8px;
-  }
-  .detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .detail-tag {
-    display: inline-block; background: rgba(255,255,255,0.06);
-    border: 1px solid var(--border); color: var(--text-soft);
-    font-size: 12px; font-weight: 500; padding: 5px 12px;
-    border-radius: 6px; transition: all 0.3s;
-  }
-  .detail-tag:hover { background: rgba(255,255,255,0.1); color: var(--text); }
-  .detail-tag.warm {
-    background: var(--warm-glow);
-    border-color: rgba(212, 160, 138, 0.15); color: var(--warm-light);
+  .pub-authors {
+    font-size: 13px;
+    color: var(--fg-muted);
+    margin-top: 2px;
   }
 
-  /* ═══════════════ FOOTER ═══════════════ */
+  .pub-venue {
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .pub-more {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  /* ── ABOUT DETAILS ── */
+  .about-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--fg-soft);
+    max-width: 680px;
+  }
+
+  .about-text p + p { margin-top: 12px; }
+
+  .detail-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .detail-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--fg-muted);
+    margin-bottom: 8px;
+  }
+
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--fg-soft);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  /* ── FOOTER ── */
   footer {
-    padding: 80px 80px 40px;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 100%, rgba(191, 136, 114, 0.08) 0%, transparent 60%),
-      #0f1e26;
-    border-top: 1px solid var(--border); text-align: center;
-  }
-  .footer-heading {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 3vw, 40px); font-weight: 400;
-    color: var(--text); margin-bottom: 16px;
-  }
-  .footer-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; }
-  .footer-links {
-    display: flex; justify-content: center; gap: 24px; margin-bottom: 60px;
-  }
-  .footer-link {
-    color: var(--text-soft); text-decoration: none;
-    font-size: 14px; font-weight: 500; padding: 10px 20px;
-    border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s;
-  }
-  .footer-link:hover {
-    color: var(--text); border-color: rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.04);
-  }
-  .footer-copy { font-size: 12px; color: var(--text-muted); }
-
-  /* ═══════════════ ANIMATIONS ═══════════════ */
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50% { opacity: 0.8; transform: scaleY(1.2); }
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--fg-muted);
+    margin-top: 20px;
   }
 
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .pos-card.reveal { transition-delay: calc(var(--i) * 0.12s); }
-
-  /* ═══════════════ RESPONSIVE ═══════════════ */
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column-reverse; padding: 120px 32px 60px; text-align: center;
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 40px;
     }
-    .hero-content { display: flex; flex-direction: column; align-items: center; }
-    .hero-portrait { margin-left: 0; margin-bottom: 32px; }
-    .portrait-wrapper { width: 180px; height: 180px; }
-    .portrait-img { width: 180px; height: 180px; }
-    .hero h1 { white-space: normal; }
-    .hero-sub { text-align: center; }
-    .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
-    section { padding: 64px 32px; }
-    footer { padding: 64px 32px 32px; }
-    nav { padding: 16px 24px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 11px; }
-    .positions-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .pub-item { grid-template-columns: 1fr; gap: 4px; }
+
+    .portrait { width: 120px; height: 120px; }
+
+    .links { justify-content: center; }
+
+    .detail-groups {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .pub-item {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+
+    .news-list li {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .news-date { width: auto; }
+  }
+
+  @media print {
+    body { font-size: 12pt; }
+    .container { max-width: 100%; }
   }
 </style>
 </head>
 <body>
 
-<div class="grain"></div>
+<div class="container">
 
-<nav id="nav">
-  <div class="nav-name">H. Andrade Loarca</div>
-  <ul class="nav-links">
-    <li><a href="#positions">Positions</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="curriculum-vitae.html">CV</a></li>
-  </ul>
-</nav>
-
-<!-- ═══════ HERO ═══════ -->
-<div class="hero">
-  <div class="hero-content">
-    <div class="hero-label">AI Researcher · Founder · Mathematician</div>
-    <h1>Héctor Andrade <em>Loarca</em></h1>
-    <p class="hero-sub">
-      PhD in Mathematics building at the intersection of deep learning, 3D computer vision, and biomedical imaging — from academic research at TUM to co-founding startups.
-    </p>
-    <div class="hero-actions">
-      <a href="curriculum-vitae.html" class="btn btn-primary">View Full CV →</a>
-      <a href="https://scholar.google.com/citations?user=YOURID" class="btn btn-ghost">Google Scholar</a>
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <img src="images/profil.png" alt="Héctor Andrade Loarca" class="portrait">
+    <div class="header-text">
+      <h1>Héctor Andrade Loarca</h1>
+      <div class="subtitle">AI Researcher · Founder · Mathematician</div>
+      <p class="bio">
+        I'm a postdoctoral researcher at <a href="https://cvg.cit.tum.de/">TUM's Computer Vision Group</a> with 
+        <a href="https://cvg.cit.tum.de/members/cremers">Prof. Daniel Cremers</a>, working on 3D deep learning, 
+        shape reconstruction, and novel view synthesis. I co-founded 
+        <a href="#">AngioWave Imaging</a> (biomedical AI for vascular imaging) and 
+        <a href="#">Colmenas</a> (AI engineering for Latin American industry). 
+        PhD in Mathematics from <a href="https://www.lmu.de/">LMU Munich</a>, supervised by 
+        <a href="https://www.math.lmu.de/~kutyniok/">Prof. Gitta Kutyniok</a>.
+      </p>
+      <div class="links">
+        <a href="mailto:andrade@math.lmu.de">Email</a>
+        <a href="curriculum-vitae.html">CV</a>
+        <a href="https://scholar.google.com/citations?user=YOURID">Scholar</a>
+        <a href="https://github.com/arsenal9971">GitHub</a>
+        <a href="https://linkedin.com/in/hectorandrade">LinkedIn</a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="hero-portrait">
-    <div class="portrait-wrapper">
-      <img src="images/profil.png" alt="Héctor Andrade Loarca" class="portrait-img">
+  <hr class="divider">
+
+  <!-- ── NEWS ── -->
+  <section>
+    <h2 class="section-title">News</h2>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">Jun 2026</span>
+        <span class="news-text">Joining <strong>EdenMed</strong> as Head of R&D, leading AI-driven medical device development.</span>
+      </li>
+      <li>
+        <span class="news-date">Jun 2026</span>
+        <span class="news-text">Emmy Noether proposal <strong>MUNDO</strong> submitted — geometric world models from sparse observations via neural operators.</span>
+      </li>
+      <li>
+        <span class="news-date">2026</span>
+        <span class="news-text"><span class="highlight-tag">New</span> DIAMOND-SSS: Diffusion-Augmented Multi-View Optimization for SubSurface Scattering. <em>arXiv</em>.</span>
+      </li>
+      <li>
+        <span class="news-date">2025</span>
+        <span class="news-text"><span class="highlight-tag">CVPR 2025</span> Learning interpretable queries for explainable image classification with information pursuit.</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── POSITIONS ── -->
+  <section>
+    <h2 class="section-title">Current Positions</h2>
+    <div class="positions-grid">
+      <div class="pos-item">
+        <span class="pos-emoji">🧠</span>
+        <div class="pos-content">
+          <div class="pos-role">Postdoctoral Researcher <span class="pos-badge">Current</span></div>
+          <div class="pos-org"><a href="https://cvg.cit.tum.de/">Computer Vision Group</a>, Technical University of Munich</div>
+          <div class="pos-desc">3D deep learning, shape reconstruction, and novel view synthesis with diffusion models.</div>
+        </div>
+      </div>
+      <div class="pos-item">
+        <span class="pos-emoji">🫀</span>
+        <div class="pos-content">
+          <div class="pos-role">Head of AI & Co-Founder <span class="pos-badge">Current</span></div>
+          <div class="pos-org"><a href="#">AngioWave Imaging</a></div>
+          <div class="pos-desc">Leading biomedical imaging AI — algorithms and software for next-generation vascular imaging.</div>
+        </div>
+      </div>
+      <div class="pos-item">
+        <span class="pos-emoji">🚀</span>
+        <div class="pos-content">
+          <div class="pos-role">CTO & Co-Founder <span class="pos-badge">Current</span></div>
+          <div class="pos-org"><a href="#">Colmenas</a> · AI Engineering Studio</div>
+          <div class="pos-desc">Building AI solutions for Latin American industries across Munich, Mexico City, and the Bay Area.</div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
+  <hr class="divider">
+
+  <!-- ── PUBLICATIONS ── -->
+  <section>
+    <h2 class="section-title">Selected Publications</h2>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title">DIAMOND-SSS: Diffusion-Augmented Multi-View Optimization for Data-efficient SubSurface Scattering</div>
+          <div class="pub-authors">G. Figueroa-Araneda, I.D. Jimenez, F. Hofherr, M. Ko, <strong>H. Andrade-Loarca</strong> et al.</div>
+          <div class="pub-venue">arXiv:2601.12020</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Investigation of data-driven stopping power calibration of treatment planning x-ray CT from simulated sparse-view proton radiographies</div>
+          <div class="pub-authors">I. Butz, <strong>H. Andrade-Loarca</strong>, A. Schiavi, V. Patera, O. Öktem, G. Kutyniok et al.</div>
+          <div class="pub-venue">Physics in Medicine & Biology, 70 (24)</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Learning interpretable queries for explainable image classification with information pursuit</div>
+          <div class="pub-authors">S. Kolek, A. Chattopadhyay, K.H.R. Chan, <strong>H. Andrade-Loarca</strong>, G. Kutyniok, R. Vidal</div>
+          <div class="pub-venue">IEEE/CVF CVPR 2025</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Algebraic Nexus of Fibonacci Forms and Two-Simplex Topology in Multicellular Morphogenesis</div>
+          <div class="pub-authors">W.E. Butler Hoyos, <strong>H. Andrade Loarca</strong>, K.T. Kahle, Z. Williams, E.G. Lamb et al.</div>
+          <div class="pub-venue">Symmetry, 16 (5)</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Explaining Image Classifiers with Multiscale Directional Image Representation</div>
+          <div class="pub-authors">S. Kolek, R. Windesheim, <strong>H. Andrade-Loarca</strong>, G. Kutyniok, R. Levie</div>
+          <div class="pub-venue">IEEE/CVF CVPR 2023</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2022</div>
+        <div>
+          <div class="pub-title">Deep Microlocal Reconstruction for Limited-Angle Tomography</div>
+          <div class="pub-authors"><strong>H. Andrade-Loarca</strong>, G. Kutyniok, O. Öktem, P. Petersen</div>
+          <div class="pub-venue">Applied & Computational Harmonic Analysis, Vol. 59</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2020</div>
+        <div>
+          <div class="pub-title">Shearlets as Feature Extractor for Semantic Edge Detection: The Model-Based and Data-Driven Realm</div>
+          <div class="pub-authors"><strong>H. Andrade-Loarca</strong>, G. Kutyniok, O. Öktem</div>
+          <div class="pub-venue">Proceedings of Royal Society A, Vol. 476</div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-year">2019</div>
+        <div>
+          <div class="pub-title">Extraction of Digital Wavefront Sets Using Applied Harmonic Analysis and Deep Neural Networks</div>
+          <div class="pub-authors"><strong>H. Andrade-Loarca</strong>, G. Kutyniok, O. Öktem, P. Petersen</div>
+          <div class="pub-venue">SIAM J. Imaging Sciences, Vol. 12, No. 4</div>
+        </div>
+      </li>
+
+    </ul>
+    <p class="pub-more">See all 14+ publications on <a href="https://scholar.google.com/citations?user=YOURID">Google Scholar →</a></p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── ABOUT ── -->
+  <section>
+    <h2 class="section-title">About</h2>
+    <div class="about-text">
+      <p>I'm a Mexican mathematician and AI researcher based in Munich. I hold a PhD in Mathematics from LMU Munich and dual BSc degrees in Mathematics and Physics from UNAM, both with near-perfect GPAs. My research bridges applied harmonic analysis, deep learning, and inverse problems — with applications in 3D computer vision, biomedical imaging, and computational physics.</p>
+      <p>Beyond academia, I co-founded AngioWave Imaging at the intersection of AI and vascular imaging, and Colmenas, an AI engineering studio serving Latin American industries. Previously, I led AI at NAZCA, a leading LatAm VC fund.</p>
+    </div>
+
+    <div class="detail-groups">
+      <div>
+        <div class="detail-group-label">Research</div>
+        <div class="detail-tags">
+          <span class="tag">3D Vision</span>
+          <span class="tag">Diffusion Models</span>
+          <span class="tag">Inverse Problems</span>
+          <span class="tag">Harmonic Analysis</span>
+          <span class="tag">Biomedical Imaging</span>
+        </div>
+      </div>
+      <div>
+        <div class="detail-group-label">Stack</div>
+        <div class="detail-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Julia</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">C/C++</span>
+          <span class="tag">CUDA</span>
+        </div>
+      </div>
+      <div>
+        <div class="detail-group-label">Languages</div>
+        <div class="detail-tags">
+          <span class="tag">Spanish</span>
+          <span class="tag">English (C1)</span>
+          <span class="tag">German (C1)</span>
+          <span class="tag">Japanese (A1)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    andrade@math.lmu.de · Munich, Germany<br>
+    © 2026 Héctor Andrade Loarca
+  </footer>
+
 </div>
-
-<!-- ═══════ POSITIONS ═══════ -->
-<section id="positions">
-  <div class="section-label reveal">Current Positions</div>
-  <h2 class="section-heading reveal reveal-delay-1">Where I work</h2>
-
-  <div class="positions-grid">
-    <div class="pos-card reveal" style="--i:0">
-      <div class="pos-badge">Current</div>
-      <span class="pos-emoji">🧠</span>
-      <div class="pos-role">Postdoctoral Researcher</div>
-      <div class="pos-org"><a href="https://cvg.cit.tum.de/">Computer Vision Group</a>, TUM</div>
-      <p class="pos-desc">3D deep learning, shape reconstruction, and novel view synthesis with diffusion models under <a href="https://cvg.cit.tum.de/members/cremers" style="color:var(--warm-light);text-decoration:none;border-bottom:1px solid rgba(212,160,138,0.3)">Prof. Daniel Cremers</a>.</p>
-    </div>
-
-    <div class="pos-card reveal" style="--i:1">
-      <div class="pos-badge">Current</div>
-      <span class="pos-emoji">🫀</span>
-      <div class="pos-role">Head of AI & Co-Founder</div>
-      <div class="pos-org"><a href="#">AngioWave Imaging</a></div>
-      <p class="pos-desc">Leading biomedical imaging AI — algorithm and software development for next-generation vascular imaging. Founding team member.</p>
-    </div>
-
-    <div class="pos-card reveal" style="--i:2">
-      <div class="pos-badge">Current</div>
-      <span class="pos-emoji">🚀</span>
-      <div class="pos-role">CTO & Co-Founder</div>
-      <div class="pos-org">Stealth Startup</div>
-      <p class="pos-desc">Building bleeding-edge AI solutions. Currently in stealth mode across Munich, Mexico City, and the Bay Area.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ PUBLICATIONS ═══════ -->
-<section id="publications">
-  <div class="section-label reveal">Research</div>
-  <h2 class="section-heading reveal reveal-delay-1">Selected Publications</h2>
-
-  <div class="pub-list">
-    <div class="pub-item reveal">
-      <div class="pub-year">2026</div>
-      <div class="pub-content">
-        <div class="pub-title">DIAMOND-SSS: Diffusion-Augmented Multi-View Optimization for Data-efficient SubSurface Scattering</div>
-        <div class="pub-authors">G. Figueroa-Araneda, I.D. Jimenez, F. Hofherr, M. Ko, H. Andrade-Loarca et al.</div>
-        <div class="pub-venue">arXiv:2601.12020</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2025</div>
-      <div class="pub-content">
-        <div class="pub-title">Investigation of data-driven stopping power calibration of treatment planning x-ray CT from simulated sparse-view proton radiographies</div>
-        <div class="pub-authors">I. Butz, H. Andrade-Loarca, A. Schiavi, V. Patera, O. Öktem, G. Kutyniok et al.</div>
-        <div class="pub-venue">Physics in Medicine & Biology, 70 (24)</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2025</div>
-      <div class="pub-content">
-        <div class="pub-title">Learning interpretable queries for explainable image classification with information pursuit</div>
-        <div class="pub-authors">S. Kolek, A. Chattopadhyay, K.H.R. Chan, H. Andrade-Loarca, G. Kutyniok, R. Vidal</div>
-        <div class="pub-venue">IEEE/CVF CVPR 2025</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2024</div>
-      <div class="pub-content">
-        <div class="pub-title">Algebraic Nexus of Fibonacci Forms and Two-Simplex Topology in Multicellular Morphogenesis</div>
-        <div class="pub-authors">W.E. Butler Hoyos, H. Andrade Loarca, K.T. Kahle, Z. Williams, E.G. Lamb et al.</div>
-        <div class="pub-venue">Symmetry, 16 (5)</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2023</div>
-      <div class="pub-content">
-        <div class="pub-title">Explaining Image Classifiers with Multiscale Directional Image Representation</div>
-        <div class="pub-authors">S. Kolek, R. Windesheim, H. Andrade-Loarca, G. Kutyniok, R. Levie</div>
-        <div class="pub-venue">IEEE/CVF CVPR 2023</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2022</div>
-      <div class="pub-content">
-        <div class="pub-title">Deep Microlocal Reconstruction for Limited-Angle Tomography</div>
-        <div class="pub-authors">H. Andrade-Loarca, G. Kutyniok, O. Öktem, P. Petersen</div>
-        <div class="pub-venue">Applied & Computational Harmonic Analysis, Vol. 59</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2020</div>
-      <div class="pub-content">
-        <div class="pub-title">Shearlets as Feature Extractor for Semantic Edge Detection: The Model-Based and Data-Driven Realm</div>
-        <div class="pub-authors">H. Andrade-Loarca, G. Kutyniok, O. Öktem</div>
-        <div class="pub-venue">Proceedings of Royal Society A, Vol. 476</div>
-      </div>
-    </div>
-
-    <div class="pub-item reveal">
-      <div class="pub-year">2019</div>
-      <div class="pub-content">
-        <div class="pub-title">Extraction of Digital Wavefront Sets Using Applied Harmonic Analysis and Deep Neural Networks</div>
-        <div class="pub-authors">H. Andrade-Loarca, G. Kutyniok, O. Öktem, P. Petersen</div>
-        <div class="pub-venue">SIAM J. Imaging Sciences, Vol. 12, No. 4</div>
-      </div>
-    </div>
-
-    <p class="pub-more reveal">See all 14+ publications on <a href="https://scholar.google.com/citations?user=YOURID">Google Scholar</a></p>
-  </div>
-</section>
-
-<!-- ═══════ ABOUT ═══════ -->
-<section id="about">
-  <div class="section-label reveal">Background</div>
-  <h2 class="section-heading reveal reveal-delay-1">About me</h2>
-
-  <div class="about-grid">
-    <div class="about-text reveal reveal-delay-2">
-      <p>I'm a Mexican mathematician and AI researcher based in Munich, Germany. I hold a PhD in Mathematics from LMU Munich (supervised by Prof. Gitta Kutyniok) and dual BSc degrees in Mathematics and Physics from UNAM, both with near-perfect GPAs.</p>
-      <p>My research bridges applied harmonic analysis, deep learning, and inverse problems — with applications in 3D computer vision, biomedical imaging, and computational physics. I currently work in the Computer Vision Group at TUM with Prof. Daniel Cremers.</p>
-      <p>Beyond academia, I co-founded AngioWave Imaging, a biomedical startup at the intersection of AI and vascular imaging, and am building a new venture in stealth. Previously, I led AI at NAZCA, a leading LatAm VC fund.</p>
-    </div>
-    <div class="about-details reveal reveal-delay-3">
-      <div class="detail-group">
-        <div class="detail-label">Research areas</div>
-        <div class="detail-tags">
-          <span class="detail-tag warm">3D Vision</span>
-          <span class="detail-tag warm">Diffusion Models</span>
-          <span class="detail-tag warm">Inverse Problems</span>
-          <span class="detail-tag">Harmonic Analysis</span>
-          <span class="detail-tag">Biomedical Imaging</span>
-          <span class="detail-tag">Neural Representations</span>
-        </div>
-      </div>
-      <div class="detail-group">
-        <div class="detail-label">Tech stack</div>
-        <div class="detail-tags">
-          <span class="detail-tag">Python</span>
-          <span class="detail-tag">Julia</span>
-          <span class="detail-tag">PyTorch</span>
-          <span class="detail-tag">TensorFlow</span>
-          <span class="detail-tag">C/C++</span>
-          <span class="detail-tag">CUDA</span>
-        </div>
-      </div>
-      <div class="detail-group">
-        <div class="detail-label">Languages</div>
-        <div class="detail-tags">
-          <span class="detail-tag">Spanish (native)</span>
-          <span class="detail-tag">English (C1)</span>
-          <span class="detail-tag">German (C1)</span>
-          <span class="detail-tag">Japanese (A1)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ FOOTER ═══════ -->
-<footer>
-  <h3 class="footer-heading reveal">Get in touch</h3>
-  <p class="footer-sub reveal reveal-delay-1">andrade@math.lmu.de · Munich, Germany</p>
-  <div class="footer-links reveal reveal-delay-2">
-    <a href="curriculum-vitae.html" class="footer-link">Full CV</a>
-    <a href="https://scholar.google.com/" class="footer-link">Google Scholar</a>
-    <a href="https://github.com/arsenal9971" class="footer-link">GitHub</a>
-    <a href="https://linkedin.com/in/hectorandrade" class="footer-link">LinkedIn</a>
-  </div>
-  <p class="footer-copy reveal reveal-delay-3">© 2026 Héctor Andrade Loarca</p>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-</script>
 
 </body>
 </html>
